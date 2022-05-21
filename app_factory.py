@@ -9,6 +9,8 @@ from typing import Union
 
 from flask import Flask
 
+import views.articles
+
 logger = logging.getLogger(__name__)
 
 
@@ -20,6 +22,7 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.name = "Hacker-view"
     app.version = get_version()
+    register_blueprints(app)
     return app
 
 
@@ -45,3 +48,7 @@ def get_version() -> Union[str, None]:
             exc_info=err
         )
         return None
+
+
+def register_blueprints(app):
+    app.register_blueprint(views.articles.blueprint)
