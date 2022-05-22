@@ -5,11 +5,10 @@ __author__ = "Vladislavs Bužinskis"
 
 import logging
 import os
-from typing import Union
-
-from flask import Flask
-
+import commands
 import views.articles
+from typing import Union
+from flask import Flask
 
 logger = logging.getLogger(__name__)
 
@@ -52,3 +51,4 @@ def get_version() -> Union[str, None]:
 
 def register_blueprints(app):
     app.register_blueprint(views.articles.blueprint)
+    app.register_blueprint(commands.cli_commands)

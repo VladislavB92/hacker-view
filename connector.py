@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = "Vladislavs Bužinskis"
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models.article import Base
