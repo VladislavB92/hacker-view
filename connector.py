@@ -9,22 +9,18 @@ from models.article import Base
 
 
 def create_connection():
-    """
-    Creates a connection engine.
-    """
+    """Creates a connection engine."""
     engine = create_engine(
         "sqlite+pysqlite:////Users/vlad/Desktop/hacker-view/hacker-view.db",
         echo=True,
-        future=True
+        future=True,
     )
     Base.metadata.create_all(engine)
     return engine
 
 
 def create_session():
-    """
-    Creates a database connection session.
-    """
+    """Creates a database connection session."""
     Session = sessionmaker()
     Session.configure(
         bind=create_connection()

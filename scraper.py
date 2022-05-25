@@ -8,7 +8,6 @@ from bs4 import BeautifulSoup
 from connector import create_session
 from models.article import Article
 
-
 session = create_session()
 
 
@@ -24,6 +23,8 @@ def fetch_data():
     for row in title_rows:
         title = row.contents[4].a.contents[0]
         link = row.contents[4].a.get("href")
+        if link.startswith("item?"):
+            link = "https://news.ycombinator.com/" + link
         points = row.next_sibling()[2].get_text().split(" ", 1)[0]
         date = row.next_sibling()[4].get("title")
 

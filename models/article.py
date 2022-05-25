@@ -11,9 +11,7 @@ Base = declarative_base()
 
 
 class Article(Base):
-    """
-    Article module.
-    """
+    """Article module."""
     __tablename__ = 'article'
 
     id = Column(Integer, primary_key=True)
@@ -23,9 +21,9 @@ class Article(Base):
     article_date = Column(String)
     created_at = Column(
         DateTime(timezone=True),
-        default=datetime.datetime.utcnow
+        default=datetime.datetime.now()
     )
     updated_at = Column(
         DateTime(timezone=True),
-        onupdate=datetime.datetime.utcnow
+        onupdate=datetime.datetime.now()
     )
