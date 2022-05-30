@@ -55,4 +55,9 @@ This application is dockerized as well as could be installed independently.
 SQLite database `hacker-view.db` is provided in the repository
 
 
+## Testing
+
+1. Launch the tests with `pytest tests`
+
+
 ![demo image](./demo.png)
