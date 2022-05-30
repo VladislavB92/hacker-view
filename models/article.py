@@ -25,5 +25,6 @@ class Article(Base):
     )
     updated_at = Column(
         DateTime(timezone=True),
+        nullable=True,
         onupdate=datetime.datetime.now()
     )
