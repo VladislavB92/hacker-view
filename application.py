@@ -14,11 +14,11 @@ application = create_app()
 logging = configure_logging()
 
 if __name__ == "__main__":
-    application.debug = True
     engine = create_connection()
     logging.info("Preparing to fetch articles...")
     scraper.fetch_data()
     application.run(
-        host=os.getenv("FLASK_HOST", "localhost"),
-        port=int(os.getenv("FLASK_PORT", 5005))
+        host="0.0.0.0",
+        port=int(os.getenv("FLASK_PORT", 5000)),
+        debug=True
     )
