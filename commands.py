@@ -4,7 +4,8 @@
 __author__ = "Vladislavs Bužinskis"
 
 from flask import Blueprint
-from scraper import update_data
+from scraper import fetch_data
+
 
 cli_commands = Blueprint("articles", __name__)
 
@@ -12,4 +13,4 @@ cli_commands = Blueprint("articles", __name__)
 @cli_commands.cli.command("update-points")
 def update_points():
     """Launches the article points update process."""
-    update_data()
+    fetch_data()

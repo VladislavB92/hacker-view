@@ -3,33 +3,29 @@
 
 __author__ = "Vladislavs Bužinskis"
 
-import logging
 import os
 import commands
+import utils
 import views.articles
-from typing import Union
 from flask import Flask
 
-logger = logging.getLogger(__name__)
+
+logger = utils.configure_logging()
 
 
 def create_app() -> Flask:
-    """
-    Creates a Flask app instance.
-    :return: Flask app instance
-    """
+    """Creates a Flask app instance."""
     app = Flask(__name__)
     app.name = "Hacker-view"
+    app.secret_key = "super secret key"
     app.version = get_version()
+    app.debug = True
     register_blueprints(app)
     return app
 
 
-def get_version() -> Union[str, None]:
-    """
-    Gets the version number from the file.
-    :return: A string with the version number or None
-    """
+def get_version():
+    """Gets the version number from the file."""
     try:
         file = "VERSION.txt"
         with open(
@@ -43,12 +39,14 @@ def get_version() -> Union[str, None]:
             return version
     except Exception as err:
         logger.exception(
-            "Failed to get version number from file",
+            "Failed to get version number from file.",
             exc_info=err
         )
         return None
 
 
 def register_blueprints(app):
+    """Registers Flask blueprints."""
     app.register_blueprint(views.articles.blueprint)
     app.register_blueprint(commands.cli_commands)
+    logger.info("Blueprints registered.")

@@ -6,16 +6,23 @@ __author__ = "Vladislavs Bužinskis"
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models.article import Base
+from utils import configure_logging
+
+
+logger = configure_logging()
 
 
 def create_connection():
     """Creates a connection engine."""
     engine = create_engine(
-        "sqlite+pysqlite:////Users/vlad/Desktop/hacker-view/hacker-view.db",
-        echo=True,
+        "sqlite+pysqlite:///hacker-view.db",
         future=True,
+        connect_args={
+            "check_same_thread": False
+        }
     )
     Base.metadata.create_all(engine)
+    logger.info("Database engine created.")
     return engine
 
 
@@ -26,4 +33,5 @@ def create_session():
         bind=create_connection()
     )
     session = Session()
+    logger.info("Database session created.")
     return session

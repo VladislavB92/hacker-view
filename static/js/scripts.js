@@ -34,5 +34,11 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 $(document).ready(function () {
-    $('#example').DataTable();
+    $('#articles_table').DataTable(
+    {
+        order: [[2, 'desc']],
+        "pageLength": 10
+    });
 });
+
+

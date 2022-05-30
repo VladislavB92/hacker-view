@@ -3,26 +3,29 @@
 
 __author__ = "Vladislavs Bužinskis"
 
-import logging
-from flask import Blueprint, render_template
-
 import scraper
+from flask import Blueprint, render_template, request
 from models.article import Article
 
-logger = logging.getLogger(__name__)
 
-blueprint = Blueprint("lookups", __name__)
+blueprint = Blueprint("articles_index", __name__)
 
 session = scraper.session
 
 
-@blueprint.route("/", methods=["GET"])
+@blueprint.route("/", methods=("GET", "POST"))
 def all_articles():
     """Lists all scrapped articles."""
-    scraper.fetch_data()
-    articles = session.query(Article).all()
+    if request.method == "POST":
+        scraper.fetch_data()
+
+    articles = session.query(Article).order_by(
+        Article.points.desc()
+    ).limit(
+        30
+    ).all()
+
     context = {
         "articles": articles
     }
     return render_template("index.html", **context)
-
