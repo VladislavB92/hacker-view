@@ -35,12 +35,9 @@ This application is dockerized as well as could be installed independently.
        python3.10 -m venv venv
        source venv/bin/activate
 
-
 2. Install the requirements
-
-
-      pip install -r requirements-dev.txt
-
+   
+      `pip install -r requirements-dev.txt`
 
 
 ## Database
