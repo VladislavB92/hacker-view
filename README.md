@@ -3,6 +3,8 @@
 Hacker-view (HW) is a Flask based project that scraps the latest top-30 articles 
 and lists them in a searchable datatable.
 
+![demo image](./demo.png)
+
 HW stores the data in SQLite database as it is lightweight, small and current project scope does not
 require more advanced database type.
 
@@ -91,6 +93,3 @@ replacing the <CONTAINER ID> with an actual ID from the last step
 ## Testing
 
 1. Launch the tests with `pytest tests`
-
-
-![demo image](./demo.png)
