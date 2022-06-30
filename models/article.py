@@ -12,7 +12,7 @@ Base = declarative_base()
 
 class Article(Base):
     """Article module."""
-    __tablename__ = 'article'
+    __tablename__ = "article"
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
