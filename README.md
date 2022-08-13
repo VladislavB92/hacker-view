@@ -93,3 +93,5 @@ replacing the <CONTAINER ID> with an actual ID from the last step
 ## Testing
 
 1. Launch the tests with `pytest tests`
+
+2. No more tests. Sorry. :(
